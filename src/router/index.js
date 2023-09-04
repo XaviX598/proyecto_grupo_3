@@ -26,6 +26,10 @@ const routes = [
     component: () => import('../modules/publicaciones/pages/NoticiasPage.vue')
   },
   {
+    path: '/ingresarNoticias',
+    component: () => import('../modules/publicaciones/pages/IngresarNoticiasPage.vue')
+  },
+  {
     path: '/publicar',
     component: () => import('../modules/publicaciones/pages/PublicacionPage.vue')
   },
