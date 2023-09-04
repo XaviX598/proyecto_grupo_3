@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { buscarQuejaFachada } from "../helpers/QuejasCliente";
+import { buscarQuejaFachada } from "../../helpers/QuejasCliente";
 export default {
     data() {
         return {

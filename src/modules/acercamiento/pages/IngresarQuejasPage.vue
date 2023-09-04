@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { guardarQuejaFachada } from "../helpers/QuejasCliente";
+import { guardarQuejaFachada } from "../../helpers/QuejasCliente";
 export default {
     data() {
         return {
