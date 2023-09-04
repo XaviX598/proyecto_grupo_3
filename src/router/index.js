@@ -1,20 +1,46 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/bienvenida',
+    component: () => import('../modules/usuario/pages/BienvenidaPage.vue')
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/',
+    component: () => import('../modules/usuario/pages/LoginPage.vue')
+  },
+  {
+    path: '/registro',
+    component: () => import('../modules/usuario/pages/RegistroPage.vue')
+  },
+  {
+    path: '/foro',
+    component: () => import('../modules/publicaciones/pages/ForoDiscusionPage.vue')
+  },
+  {
+    path: '/ingresarTema',
+    component: () => import('../modules/publicaciones/pages/IngresarTemaPage.vue')
+  },
+  {
+    path: '/noticias',
+    component: () => import('../modules/publicaciones/pages/NoticiasPage.vue')
+  },
+  {
+    path: '/publicar',
+    component: () => import('../modules/publicaciones/pages/PublicacionPage.vue')
+  },
+  {
+    path: '/ingresarQueja',
+    component: () => import('../modules/acercamiento/pages/IngresarQuejasPage.vue')
+  },
+  {
+    path: '/quejas',
+    component: () => import('../modules/acercamiento/pages/QuejasPage.vue')
+  },
+  {
+    path: '/suscripcionAso',
+    component: () => import('../modules/acercamiento/pages/SuscripcionASO.vue')
+  },
 ]
 
 const router = createRouter({

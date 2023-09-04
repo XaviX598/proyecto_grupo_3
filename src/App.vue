@@ -1,10 +1,20 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <NavBarVue/>
   <router-view/>
+  <ContactosVue/>
 </template>
+
+<script>
+import ContactosVue from './components/Contactos.vue'
+import NavBarVue from './components/NavBar.vue'
+
+export default {
+  components : {
+    NavBarVue,
+    ContactosVue
+  }
+}
+</script>
 
 <style>
 #app {
@@ -12,19 +22,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: black;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+body {
+  margin: 0;
 }
 </style>
