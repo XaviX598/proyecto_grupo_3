@@ -1,19 +1,24 @@
 <template>
   <NavBarVue/>
   <router-view/>
-  <ContactosVue/>
+  <ContactosVue />
 </template>
 
 <script>
-import ContactosVue from './components/Contactos.vue'
-import NavBarVue from './components/NavBar.vue'
+import ContactosVue from "./components/Contactos.vue";
+import NavBarVue from "./components/NavBar.vue";
 
 export default {
-  components : {
+  components: {
     NavBarVue,
-    ContactosVue
-  }
-}
+    ContactosVue,
+  },
+  data() {
+    return {
+      userG: null,
+    };
+  },
+};
 </script>
 
 <style>

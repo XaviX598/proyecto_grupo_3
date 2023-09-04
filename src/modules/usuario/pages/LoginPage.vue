@@ -29,6 +29,7 @@
 
 <script>
 import { loginUsuarioFachada } from "../../helpers/usuarioCliente";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   data() {
@@ -39,14 +40,27 @@ export default {
       user: null,
     };
   },
+     computed: {
+    ...mapState(["usuariologin"]),
+  },
   methods: {
+     ...mapMutations(["setUsuarioLogin"]),
+    cambiarUsuario(objeto) {
+      const nuevoObjeto = objeto;
+      this.setUsuarioLogin(nuevoObjeto);
+    },
     async verificarLogin() {
-      const data = await loginUsuarioFachada(this.usuario, this.reverse(this.contraseña));
+      const data = await loginUsuarioFachada(
+        this.usuario,
+        this.reverse(this.contraseña)
+      );
       if (data.id != null) {
         this.user = data;
+        //console.log(this.user);
+        this.cambiarUsuario(this.user);
         this.$router.push("/bienvenida");
       } else {
-        alert("Usuario o contraseña Incorrectos")
+        alert("Usuario o contraseña Incorrectos");
       }
     },
     reverse(input) {
@@ -140,11 +154,11 @@ export default {
 }
 
 #button {
-    background: #27dbd5;
-    border: 2px solid #00afa9;
-    padding-block: 10px;
-    padding-inline: 20px;
-    font-size: 20px;
-    cursor: pointer;
+  background: #27dbd5;
+  border: 2px solid #00afa9;
+  padding-block: 10px;
+  padding-inline: 20px;
+  font-size: 20px;
+  cursor: pointer;
 }
 </style>
