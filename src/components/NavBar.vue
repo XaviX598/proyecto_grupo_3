@@ -6,6 +6,7 @@
     </router-link>
     <router-link to="/noticias">Noticias</router-link>
     <router-link to="/foro">Foro</router-link>
+    <router-link to="/suscripcionAso">Suscribirse ASO</router-link>
     <router-link to="/ingresarQueja">IQuejas</router-link>
     <router-link to="/quejas">Quejas</router-link>
   </nav>
