@@ -8,7 +8,7 @@
                 <th>Valoración</th>
             </tr>
             <tr v-for="(opinion, index) in opiniones" :key="index">
-                <td>{{ opinion.usuario }}</td>
+                <td>{{ opinion.usuario.usuario }}</td>
                 <td>{{ formatearFecha(opinion.fecha) }}</td>
                 <td>{{ opinion.descripcion }}</td>
                 <td>{{ opinion.valoracion }}</td>
@@ -16,8 +16,8 @@
         </table>
     </div>
     <div class="btn_irQuejas">
-            <button @click="agregarQueja">Ingresa tu opinión sobre nuestro sitio</button>
-        </div>
+        <button @click="agregarQueja">Ingresa tu opinión sobre nuestro sitio</button>
+    </div>
 </template>
 
 <script>
@@ -57,6 +57,7 @@ export default {
             })
             .catch(error => {
                 console.error("Error al obtener opiniones:", error);
+                console.error("Detalles del error:", error.message);
             });
     }
 

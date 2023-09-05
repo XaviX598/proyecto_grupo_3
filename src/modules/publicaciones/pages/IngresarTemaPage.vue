@@ -20,6 +20,7 @@
   
   <script>
 import { ingresarTemaFachada } from "../../helpers/Foro";
+import { mapState } from "vuex";
 
 export default {
   data() {
@@ -39,18 +40,37 @@ export default {
       const fechaActual = new Date().toISOString();
 
       const objeto = {
-        usuario: null,
+        usuario: this.usuariologin,
         descripcion: this.descripcion,
         titulo: this.titulo,
         fecha: fechaActual,
       };
 
       ingresarTemaFachada(objeto);
+      this.descripcion = "";
+      this.titulo = "";
+
+      this.valoracion = "";
+
+      const confirmacion = confirm(
+        "Nuevo Tema agregada con éxito"
+      );
+
+
+      if (confirmacion) {
+      } else {
+        this.$router.push({ path: "/foro" });
+      }
+
     },
 
     regresar() {
       this.$router.push({ path: "/foro" });
     },
+  },
+
+  computed: {
+    ...mapState(["usuariologin"]),
   },
 };
 </script>

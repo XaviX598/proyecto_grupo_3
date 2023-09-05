@@ -8,32 +8,24 @@
         <th>Accion</th>
       </tr>
       <tr v-for="(tema, index) in temas" :key="index">
-        <td>{{ tema.usuario }}</td>
+        <td>{{ tema.usuario.usuario }}</td>
         <td>{{ formatearFecha(tema.fecha) }}</td>
         <td>{{ tema.titulo }}</td>
         <td><button @click="buscarTema(tema.id)">Ver</button></td>
       </tr>
     </table>
 
-    <label for="">Titulo:</label>
-    <p>{{ tema.titulo }}</p>
-    <label for="">Usuario:</label>
-    <p>{{ tema.usuario }}</p>
-
-    <label for="">Descripcion</label>
-    <p>{{ tema.descripcion }}</p>
-    <label for="">Comentarios:</label>
-    <Label>Agregar comentario:</Label>
-    <input
-      placeholder="Ingrese su comentario"
-      type="text"
-      v-model="comentario"
-    />
-    <button @click="ingresarComentario">Ingresar Comentario</button>
+    
+    
   </div>
+
+
   <div class="btn_irQuejas">
     <button @click="agregarTema()">Ingresa un nuevo tema en el foro</button>
   </div>
+
+  <TemaVue :temaobjeto = "tema"  v-if="tema"></TemaVue>
+
 </template>
 
 <script>
@@ -42,6 +34,9 @@ import { buscarTemaFachada } from "../../helpers/Foro";
 import TemaVue from "../components/Tema.vue";
 import { ingresarComentarioFachada } from "../../helpers/Comentario";
 
+import { mapState } from "vuex";
+
+
 export default {
   components: {
     TemaVue,
@@ -49,15 +44,15 @@ export default {
   data() {
     return {
       temas: [],
-      tema: {},
+      tema: null,
       comentario: null,
       fecha: null,
-      usuario: null,
+
+      comentarios: [],
     };
   },
 
   methods: {
-
     ingresarComentario() {
       if (!this.comentario) {
         alert("Por favor, complete todos los campos obligatorios.");
@@ -66,15 +61,25 @@ export default {
       const fechaActual = new Date().toISOString();
 
       const objeto = {
-        usuario: null,
+        usuario: this.usuariologin,
         comentario: this.comentario,
         fecha: fechaActual,
-        tema: this.tema
+        tema: this.tema,
       };
 
       ingresarComentarioFachada(objeto);
-    },
 
+      this.comentario = "";
+      this.valoracion = "";
+
+      const confirmacion = confirm("Nuevo Tema agregada con éxito");
+
+      if (confirmacion) {
+      } else {
+        this.$router.push({ path: "/foro" });
+      }
+    },
+    
 
     formatearFecha(fecha) {
       if (!fecha) return ""; // Manejar el caso en el que la fecha es nula o indefinida
@@ -87,6 +92,7 @@ export default {
 
       return `${año}-${mes}-${dia}`;
     },
+
     agregarTema() {
       this.$router.push({ path: "/ingresarTema" });
     },
@@ -96,12 +102,15 @@ export default {
       console.log(data);
       this.tema = data;
     },
+
+
+
   },
   mounted() {
     buscarTodosTemasFachada()
-      .then((temas) => {
+      .then(temas => {
         // Formatear las fechas antes de almacenarlas en opiniones
-        this.temas = temas.map((tema) => {
+        this.temas = temas.map(tema => {
           return {
             ...tema,
             fechaFormateada: this.formatearFecha(tema.fecha),
@@ -109,8 +118,14 @@ export default {
         });
       })
       .catch((error) => {
-        console.error("Error al obtener opiniones:", error);
+        console.error("Error al obtener temas:", error);
+        console.error("Detalles del error:", error.message);
+
       });
+  },
+
+  computed: {
+    ...mapState(["usuariologin"]),
   },
 };
 </script>

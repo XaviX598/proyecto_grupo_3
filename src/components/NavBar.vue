@@ -1,57 +1,59 @@
 <template>
   <nav class="container">
-    <router-link to="/bienvenida"
-      >Bienvenida
-      <!-- <img id="imgLogo" src="" alt="No se pudo mostrar la imagen." /> -->
-    </router-link>
-    <router-link to="/noticias">Noticias</router-link>
-    <router-link to="/foro">Foro</router-link>
-    <router-link to="/ingresarQueja">IQuejas</router-link>
-    <router-link to="/quejas">Quejas</router-link>
+    <div class="logo">
+      <img id="imgLogo" src="../assets/logo_uce.png" />
+      <h1>Facultad de Ingeniería y Ciencias Aplicadas</h1>
+    </div>
+    <div class="menu">
+      <router-link to="/bienvenida">Inicio</router-link>
+      <router-link to="/noticias">Noticias</router-link>
+      <router-link to="/foro">Foro</router-link>
+      <router-link to="/quejas">Quejas</router-link>
+    </div>
   </nav>
 </template>
-  
-<script>
-export default {
-  data() {
-    return {
 
-    };
-  },
-};
+<script>
+export default {};
 </script>
-  
+
 <style scoped>
 * {
-  font-size: 18px;
+  font-size: 2.2vh;
   text-decoration: none;
-  font-weight: bold;
-  color: black;
-}
-
-#imgLogo {
-  height: 45px;
-  position: relative;
-  top: 17px;
-}
-
-#imgPerfil {
-  height: 45px;
-  position: relative;
-  top: 17px;
-}
-
-a {
-  padding: 0px 70px;
-  position: relative;
-  color: black;
+  color: white;
 }
 
 .container {
-  background: #27dbd5;
-  padding: 10px;
+  display: flex;
+  background: #017DC7;
   width: 100%;
-  top: 0;
-  border-bottom: 2px solid #00afa9;
+  border-bottom: 2px solid #00395a;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+}
+
+.menu {
+  padding-block: 7px;
+  align-items: center;
+}
+
+a {
+  margin-right: 30px;
+  position: relative;
+  top: 1.7vh;
+}
+
+h1 {
+  margin-left: 7px;
+}
+
+#imgLogo {
+  height: 6vh;
 }
 </style>

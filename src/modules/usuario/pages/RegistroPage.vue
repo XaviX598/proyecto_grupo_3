@@ -25,7 +25,7 @@
             <label>Contraseña</label>
           </div>
           <div class="input-box">
-            <input v-model="usuario.semestre" type="text" required />
+            <input v-model="usuario.semestre" type="number" required />
             <label>Semestre</label>
           </div>
           <div class="input-box">
