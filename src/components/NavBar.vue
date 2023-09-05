@@ -83,7 +83,7 @@ h1 {
   height: 6vh;
 }
 
-@media (max-width: 625px) {
+@media (max-width: 701px) {
   .menuEstatico {
     display: none;
   }
@@ -119,7 +119,7 @@ h1 {
   }
 }
 
-@media (min-width: 626px) {
+@media (min-width: 700px) {
   #menuBtn {
     display: none;
   }
