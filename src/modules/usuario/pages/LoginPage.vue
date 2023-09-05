@@ -84,7 +84,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('C:\Users\kevin\Documents\Visual_workspace\PaginaProyectoGrupal\proyecto_grupo_3\src\assets\degradado.png');
+  background-image: url('../../../assets/degradado.png');
   background-size: cover;
   background-repeat: repeat;
 }
@@ -188,5 +188,44 @@ h2 {
   padding-inline: 20px;
   font-size: 20px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+    height: auto;
+    max-width: 400px; 
+  }
+  .form-box {
+    padding: 20px;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+  .input-box {
+    margin: 20px 0;
+  }
+  #button {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    width: 90%;
+    max-width: none; 
+  }
+  .form-box {
+    padding: 10px;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  .input-box {
+    margin: 15px 0;
+  }
+  #button {
+    font-size: 16px;
+  }
 }
 </style>

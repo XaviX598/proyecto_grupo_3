@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <button @click="agregarNoticia">Ingresa tu noticia</button>
+  </div>
   <div class="noticia">
     <tr v-for="(noticia, id) in noticias" :key="id">
       <h1>{{ noticia.usuario.usuario }}</h1>
@@ -6,28 +9,14 @@
       <h1>{{ noticia.titulo }}</h1>
       <p>{{ noticia.descripcion }}</p>
       <div>
-        <img
-          v-if="comprobar(noticia.imagen)"
-          :src="noticia.imagen"
-          alt="No se pudo encontrar la imagen"
-        />
+        <img v-if="comprobar(noticia.imagen)" :src="noticia.imagen" alt="No se pudo encontrar la imagen" />
       </div>
 
-      <iframe
-        v-if="comprobar(noticia.video)"
-        width="560"
-        height="315"
-        :src="'https://www.youtube.com/embed/' + noticia.video"
-        title="YouTube video player"
-        frameborder="0"
+      <iframe v-if="comprobar(noticia.video)" width="560" height="315"
+        :src="'https://www.youtube.com/embed/' + noticia.video" title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
+        allowfullscreen></iframe>
     </tr>
-  </div>
-
-  <div>
-    <button @click="agregarNoticia">Ingresa tu noticia</button>
   </div>
 </template>
 

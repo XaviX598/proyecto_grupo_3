@@ -1,24 +1,21 @@
 <template>
   <div class="container">
-    <div class="datos">
-      <label for="">Detalles</label>
-      <input
-        placeholder="Coloca aqui tu opinión"
-        type="text"
-        v-model="descripcion"
-      />
-      <label for="">Valoracion</label>
-      <input
-        placeholder="Danos una valoración de tu experiencia siendo 1 el mas bajo y 5 el mas alto"
-        type="number"
-        v-model="valoracion"
-      />
+    <div class="detalles">
+      <label class="detallestxt" for="">DETALLES</label>
+      <textarea class="descripcion_input" placeholder="Ingresa la descripción de tu inconveniente..."
+        v-model="descripcion">
+      </textarea>
+
     </div>
-    <div class="btn_guardar">
-      <button @click="agregarQueja">Ingresa tu opinion</button>
+    <div class="valoracion">
+      <label class="valoraciontxt" for="">VALORA NUESTRO SITIO (Del 1 al 10)</label>
+      <input class="valoracionnumber"  type="number" max="10" min="1" v-model="valoracion" />
+
     </div>
-    <div class="btn_regresar">
-      <button @click="regresar">Regresar a la interfaz de quejas</button>
+    <div class="botones">
+      <button class="btn_guardar" @click="agregarQueja">INGRESA TU OPINIÓN</button>
+
+      <button class="btn_regresar" @click="regresar">REGRESAR</button>
     </div>
   </div>
 </template>
@@ -45,6 +42,10 @@ export default {
         alert("Por favor, complete todos los campos obligatorios.");
         return;
       }
+      if (this.valoracion < 1 || this.valoracion > 10) {
+        alert("La valoración debe estar entre 1 y 10.");
+        return;
+      }
       const fechaActual = new Date().toISOString();
       const objeto = {
         usuario: this.usuariologin,
@@ -68,8 +69,78 @@ export default {
     regresar() {
       this.$router.push({ path: "/quejas" });
     },
+
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.detallestxt {
+  margin-bottom: 20px;
+}
+
+.detalles {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.valoracion {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.valoraciontxt {
+  margin-right: 10px;
+
+}
+
+.valoracionnumber {
+  width: 40px;
+}
+
+.descripcion_input {
+  height: 300px;
+  width: 900px;
+  resize: none;
+  padding: 5px;
+  white-space: pre-line;
+  text-align: left;
+}
+
+.btn_guardar,
+.btn_regresar {
+  width: 100%;
+  padding: 20px 10px;
+  border: solid;
+  border-radius: 5px;
+}
+
+.btn_guardar {
+  margin-right: 20px;
+}
+
+.btn_guardar:hover {
+  cursor: pointer;
+  background-color: rgb(104, 169, 112);
+}
+
+.btn_regresar:hover {
+  cursor: pointer;
+  background-color: rgb(190, 114, 113);
+}
+
+.botones {
+  display: flex;
+  width: 50%;
+}
+</style>
