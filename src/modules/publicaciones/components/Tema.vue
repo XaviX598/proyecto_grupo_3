@@ -176,9 +176,7 @@ export default {
   padding: 10px;
   max-width: 100%;
   width: 100%;
-
   align-self: flex-start;
-  /* Cambiado a izquierda */
   clear: both;
   position: relative;
 }
@@ -218,7 +216,6 @@ export default {
 }
 
 .container {
-  /* background-color: #1656c9; */
   width: 70%;
 }
 </style>

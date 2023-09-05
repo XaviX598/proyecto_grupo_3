@@ -1,24 +1,27 @@
 <template>
-<div class="container">
-  <div>
-    <button @click="agregarNoticia">Ingresa tu noticia</button>
-  </div>
-  <div class="noticia">
-    <tr v-for="(noticia, id) in noticias" :key="id">
-      <h1>{{ noticia.usuario.usuario }}</h1>
-      <h1>{{ formatearFecha(noticia.fecha) }}</h1>
-      <h1>{{ noticia.titulo }}</h1>
-      <p>{{ noticia.descripcion }}</p>
-      <div>
-        <img v-if="comprobar(noticia.imagen)" :src="noticia.imagen" alt="No se pudo encontrar la imagen" />
-      </div>
+  <div class="container">
+    <div>
+      <button @click="agregarNoticia">Ingresa tu noticia</button>
+    </div>
+    <div class="noticia">
+      <tr class="individual" v-for="(noticia, id) in noticias" :key="id">
+        <div class="encabezado">
+          <h1>{{ noticia.usuario.usuario }}</h1>
+          <h1>{{ formatearFecha(noticia.fecha) }}</h1>
+        </div>
 
-      <iframe v-if="comprobar(noticia.video)" width="560" height="315"
-        :src="'https://www.youtube.com/embed/' + noticia.video" title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </tr>
-  </div>
+        <h1>{{ noticia.titulo }}</h1>
+        <p>{{ noticia.descripcion }}</p>
+        <div>
+          <img v-if="comprobar(noticia.imagen)" :src="noticia.imagen" alt="No se pudo encontrar la imagen" />
+        </div>
+
+        <iframe v-if="comprobar(noticia.video)" width="560" height="315"
+          :src="'https://www.youtube.com/embed/' + noticia.video" title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </tr>
+    </div>
   </div>
 </template>
 
@@ -69,7 +72,7 @@ export default {
 };
 </script>
 
-<style  scoped>
+<style scoped>
 .container {
   display: flex;
   flex-direction: column;
@@ -77,10 +80,39 @@ export default {
   align-items: center;
   background: rgb(188, 212, 255);
 }
+
 .noticia {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+.individual {
+  background: white;
+  width: 70%;
+  margin: 10px;
+  border-radius: 15px;
+  padding-inline: 20px;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 2vmax;
+}
+
+img {
+  width: 50vmin;
+  margin-bottom: 20px;
+}
+
+iframe {
+  width: 60vmin;
+  margin-bottom: 20px;
 }
 </style>

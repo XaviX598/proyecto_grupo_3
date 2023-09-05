@@ -73,7 +73,6 @@ export default {
           image:
             "https://poptv.orange.es/wp-content/uploads/sites/3/2022/09/untitled-26.jpg",
         },
-        // Agrega más objetos para más slides
       ],
     };
   },
@@ -82,13 +81,24 @@ export default {
   
   
 <style scoped>
-
+.carousel-container {
+  margin-inline: 30px;
+  padding: 0;
+  width: 70%;
+  margin-bottom: 20px;
+}
 
 slide {
   width: 80vw;
 }
+
 img {
-  width: 60%;
+  width: 100%;
+}
+
+a {
+  padding: 0;
+  margin: 0;
 }
 
 .elementos {
@@ -96,12 +106,12 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   width: 100%;
 }
 
 h4{
   color: white;
+  margin: 5px;
 }
 
 </style>

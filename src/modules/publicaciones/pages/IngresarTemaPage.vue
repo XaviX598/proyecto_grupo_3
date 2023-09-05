@@ -4,11 +4,11 @@
       <label for="">Título: </label>
       <input placeholder="Ingrese el Título..." type="text" v-model="titulo" />
     </div>
-<div class="descrip">
-  <label class="des" for="">Descripción: </label>
-    <textarea placeholder="Ingrese la descripción" v-model="descripcion" class="descripcion_input"></textarea>
-</div>
-    
+    <div class="descrip">
+      <label class="des" for="">Descripción: </label>
+      <textarea placeholder="Ingrese la descripción" v-model="descripcion" class="descripcion_input"></textarea>
+    </div>
+
 
     <div class="botones">
       <button class="btn_guardar" @click="ingresarTema">Ingresar Tema</button>
@@ -87,10 +87,12 @@ export default {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.titulo{
+
+.titulo {
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
 .detallestxt {
   margin-bottom: 20px;
 }
@@ -100,14 +102,17 @@ export default {
   flex-direction: column;
   margin-bottom: 30px;
 }
-.descrip{
+
+.descrip {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
-.des{
+
+.des {
   margin-bottom: 20px;
 }
+
 .valoracion {
   display: flex;
   margin-bottom: 30px;
@@ -146,15 +151,16 @@ export default {
 .btn_guardar:hover {
   cursor: pointer;
   background-color: rgb(104, 169, 112);
+  color: black;
 }
 
 .btn_regresar:hover {
   cursor: pointer;
   background-color: rgb(190, 114, 113);
+  color: black;
 }
 
 .botones {
   display: flex;
   width: 50%;
-}
-</style>
+}</style>

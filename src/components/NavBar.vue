@@ -5,11 +5,12 @@
       <h1 :class="{ 'facultad': facultad }" ref="facultad">Facultad de Ingeniería y Ciencias Aplicadas</h1>
     </div>
     <div class="menuEstatico">
-      <router-link to="/bienvenida">Inicio</router-link>
-      <router-link to="/noticias">Noticias</router-link>
-      <router-link to="/suscripcionAso">Suscripción ASO</router-link>
-      <router-link to="/foro">Foro</router-link>
-      <router-link to="/quejas">Quejas</router-link>
+      <router-link class="ini" to="/bienvenida">Inicio</router-link>
+      <router-link class="ini" to="/noticias">Noticias</router-link>
+      <router-link class="ini" to="/suscripcionAso">Suscripción ASO</router-link>
+      <router-link class="ini" to="/foro">Foro</router-link>
+      <router-link class="ini" to="/quejas">Quejas</router-link>
+      <router-link class="ini" to="/">Cerrar Sesión</router-link>
     </div>
     <button id="menuBtn" @click="toggleMenu">☰</button>
   </nav>
@@ -20,6 +21,7 @@
       <router-link class="menuItem" to="/suscripcionAso">Suscripción ASO</router-link>
       <router-link class="menuItem" to="/foro">Foro</router-link>
       <router-link class="menuItem" to="/quejas">Quejas</router-link>
+      <router-link class="menuItem" to="/">Cerrar Sesión</router-link>
     </div>
   </div>
 </template>
@@ -38,7 +40,7 @@ export default {
     },
     comprobarAncho() {
       let element = this.$refs['facultad']
-      if (window.innerWidth <= 735) {
+      if (window.innerWidth <= 1100) {
         this.isMenuActive = false;
       } else {
         this.isMenuActive = true;
@@ -102,6 +104,10 @@ a {
   border-bottom: 2px solid black;
 }
 
+
+.ini:hover {
+  color: #A68D37;
+}
 h1 {
   margin-left: 7px;
 }
@@ -116,7 +122,7 @@ h1 {
   font-weight: bold;
 }
 
-@media (max-width: 735px) and (min-height: 553px) {
+@media (max-width: 1100px) and (min-height: 553px) {
   .menuEstatico {
     display: none;
   }
@@ -158,7 +164,7 @@ h1 {
   }
 }
 
-@media (min-width: 735px) {
+@media (min-width: 1100px) {
   #menuBtn {
     display: none;
   }
@@ -168,7 +174,7 @@ h1 {
   }
 }
 
-@media (max-width: 735px) and (max-height: 553px) {
+@media (max-width: 1100px) and (max-height: 553px) {
   .menuEstatico {
     display: none;
   }
@@ -206,16 +212,6 @@ h1 {
     color: white;
     text-decoration: none;
     display: block;
-  }
-}
-
-@media (min-width: 958px) {
-  #menuBtn {
-    display: none;
-  }
-
-  .menu {
-    display: none;
   }
 }
 </style>

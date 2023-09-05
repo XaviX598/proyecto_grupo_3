@@ -10,7 +10,6 @@
     <div class="valoracion">
       <label class="valoraciontxt" for="">VALORA NUESTRO SITIO (Del 1 al 10)</label>
       <input class="valoracionnumber"  type="number" max="10" min="1" v-model="valoracion" />
-
     </div>
     <div class="botones">
       <button class="btn_guardar" @click="agregarQueja">INGRESA TU OPINIÓN</button>
@@ -86,6 +85,7 @@ export default {
 
 .detallestxt {
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .detalles {
@@ -97,6 +97,9 @@ export default {
 .valoracion {
   display: flex;
   margin-bottom: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
 }
 
 .valoraciontxt {
@@ -132,11 +135,13 @@ export default {
 .btn_guardar:hover {
   cursor: pointer;
   background-color: rgb(104, 169, 112);
+  color: black;
 }
 
 .btn_regresar:hover {
   cursor: pointer;
   background-color: rgb(190, 114, 113);
+  color: black;
 }
 
 .botones {

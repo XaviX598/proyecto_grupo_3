@@ -1,11 +1,11 @@
 <template>
   <div class="bienvenida">
-    <h1>Bienvenidos</h1>
+    <h1 id="facultad">FACULTAD DE INGENIERÍA Y CIENCIAS APLICADAS</h1>
+    <h3 id="carrera">Ciencias de la computación</h3>
 
-    <h1>FACULTAD DE INGENIERÍA Y CIENCIAS APLICADAS</h1>
     <Banner />
     <div class="informacion1">
-      <h3>MISIÓN DE LA CARRERA:</h3>
+      <h3>MISIÓN DE LA CARRERA</h3>
 
       <p>
         Formar profesionales con valores, que integren los aspectos sociales,
@@ -14,7 +14,7 @@
         información.
       </p>
 
-      <h3>VISIÓN DE LA CARRERA:</h3>
+      <h3>VISIÓN DE LA CARRERA</h3>
 
       <p>
         Al 2019 la Carrera de Computación de la Universidad Central del
@@ -24,7 +24,7 @@
         investigación y de la vinculación de la sociedad.
       </p>
 
-      <h3>OBJETIVO GENERAL:</h3>
+      <h3>OBJETIVO GENERAL</h3>
 
       <p>
         La Carrera de Ingeniería en Ciencias de la Computación, tiene por
@@ -54,22 +54,14 @@ export default {
 };
 </script>
 
-<style>
-body {
-  position: relative;
-  width: 100%;
-  background-image: url("../../../assets/imagenFondo.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
+<style scoped>
 .bienvenida {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .informacion1 {
   display: flex;
   flex-direction: column;
@@ -77,17 +69,42 @@ body {
   align-items: center;
   color: black;
   background: rgb(250, 238, 220);
-  border: 6px solid rgb(119, 119, 255);
+  border: 3px solid rgb(0, 0, 0);
   border-radius: 10px;
   padding: 20px;
   width: 80%;
   text-align: justify;
   margin-bottom: 20px;
 }
+
 .informacion h3 {
   font-weight: bold;
 }
-.bienvenida h1, .bienvenida h2{
+
+.bienvenida h1,
+h2,
+#carrera {
   color: white;
 }
-</style>
+
+.carousel__prev,
+.carousel__next,
+.carousel__pagination,
+.carousel__track {
+  margin: 0;
+}
+
+.carousel__pagination, .carousel__pagination-button, .carousel__pagination-button--active, .carousel__pagination-item {
+  display: none;
+  visibility: hidden;
+}
+
+#facultad {
+  font-size: 2.5vmax;
+}
+
+#carrera {
+  font-size: 2.3vmax;
+  margin-top: 0;
+  margin-bottom: 10px;
+}</style>

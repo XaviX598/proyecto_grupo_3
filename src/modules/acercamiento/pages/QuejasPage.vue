@@ -24,9 +24,7 @@ export default {
     },
     methods: {
         formatearFecha(fecha) {
-            if (!fecha) return ""; // Manejar el caso en el que la fecha es nula o indefinida
-
-            // Formatear la fecha al formato "YYYY-MM-DD"
+            if (!fecha) return "";
             const fechaFormateada = new Date(fecha);
             const dia = fechaFormateada.getDate().toString().padStart(2, '0');
             const mes = (fechaFormateada.getMonth() + 1).toString().padStart(2, '0');
@@ -41,7 +39,6 @@ export default {
     mounted() {
         buscarQuejaFachada()
             .then(opiniones => {
-                // Formatear las fechas antes de almacenarlas en opiniones
                 this.opiniones = opiniones.map(opinion => {
                     return {
                         ...opinion,
@@ -55,7 +52,6 @@ export default {
                 console.error("Detalles del error:", error.message);
             });
     }
-
 };
 </script>
 
@@ -67,8 +63,8 @@ export default {
 .mensaje {
     background-color: #f2f2f2;
     border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
+    padding: 20px;
+    margin: 20px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -80,8 +76,6 @@ export default {
     align-items: flex-start;
 }
 
-
-
 .fecha {
     font-size: 12px;
     color: #888;
@@ -89,15 +83,14 @@ export default {
 
 .descripcion {
     font-size: 14px;
-    margin-top: 40px;
+    margin-top: 10px;
     font-weight: bold;
     text-align: start;
-    /* Centrar la descripción */
 }
 
 .valoracion {
     align-self: flex-end;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .btnQuejas {
