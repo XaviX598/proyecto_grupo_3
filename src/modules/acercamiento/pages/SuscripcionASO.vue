@@ -1,35 +1,40 @@
 <template>
-  <div class="form-box registro">
-    <div class="input-box">
-      <label>Usuario: {{ this.usuario.usuario }}</label>
+  <div class="container">
+    <h1>
+      Suscríbete a nuestra ASO
+    </h1>
+    <div class="form-box">
+      <div class="input-box">
+        <label>Usuario {{ this.usuario.usuario }}</label>
+      </div>
+      <div class="input-box">
+        <input v-model="usuario.nombre" type="text" required />
+        <label>Nombre</label>
+      </div>
+      <div class="input-box">
+        <input v-model="usuario.apellido" type="text" required />
+        <label>Apellido</label>
+      </div>
+      <div class="input-box">
+        <input v-model="usuario.correo" type="email" required />
+        <label>Correo</label>
+      </div>
+      <div class="input-box">
+        <input v-model="usuario.semestre" type="text" required />
+        <label>Semestre</label>
+      </div>
+      <div class="input-box">
+        <input v-model="usuario.cedula" type="text" required />
+        <label>Cédula</label>
+      </div>
+      <div class="input-box">
+        <input v-model="usuario.direccion" type="text" required />
+        <label>Dirección</label>
+      </div>
     </div>
-    <div class="input-box">
-      <input v-model="usuario.nombre" type="text" required />
-      <label>Nombre</label>
-    </div>
-    <div class="input-box">
-      <input v-model="usuario.apellido" type="text" required />
-      <label>Apellido</label>
-    </div>
-    <div class="input-box">
-      <input v-model="usuario.correo" type="email" required />
-      <label>Correo</label>
-    </div>
-    <div class="input-box">
-      <input v-model="usuario.semestre" type="text" required />
-      <label>Semestre</label>
-    </div>
-    <div class="input-box">
-      <input v-model="usuario.cedula" type="text" required />
-      <label>Cedula</label>
-    </div>
-    <div class="input-box">
-      <input v-model="usuario.direccion" type="text" required />
-      <label>Direccion</label>
-    </div>
+    <button @click="registrarse">Suscribirse</button>
+    <label class="error-message" v-show="mostrar" v-text="mensaje"></label>
   </div>
-  <button @click="registrarse">Suscribirse</button>
-  <label for="" v-show="mostrar" v-text="mensaje"></label>
 </template>
 
 <script>
@@ -82,8 +87,10 @@ export default {
       ) {
         this.mensaje = "Por favor, complete todos los campos";
       } else {
-        const usuario = { usuario: this.usuariologin.usuario
-          ,user:this.usuario };
+        const usuario = {
+          usuario: this.usuariologin.usuario
+          , user: this.usuario
+        };
         const suscrito = await suscribirseFachada(usuario);
         if (suscrito) {
           this.mensaje = "Se ha suscrito a la ASO";
@@ -97,60 +104,59 @@ export default {
 };
 </script>
 
-<style scope>
-.wrapper {
+<style scoped>
+.container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: 1000px;
-  background: #ffebd2;
-  border: 6px solid #93e3d4;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  background: rgb(188, 212, 255);
 }
-.wrapper .form-box {
-  width: 100%;
-  padding: 40px;
+
+.form-box {
+  width: 70%;
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 15px;
 }
-.form-box h2 {
-  font-size: 2.2em;
-  color: #000000;
-  text-align: center;
+
+.form-box label {
+  color: #A68D37;
 }
+
 .input-box {
   position: relative;
   width: 100%;
-  height: 50px;
-  border-bottom: 2px solid #1d1b1b;
-  margin: 30px 0;
+  height: 30px;
+  border-bottom: 2px solid #A68D37;
+  margin-bottom: 30px;
 }
+
 .input-box label {
   position: absolute;
   top: 50%;
   left: 5px;
-  transform: translateY(-50%);
-  font-size: 1em;
-  color: #ff5555;
-  font-weight: 500;
+  font-size: 0.8em;
+  transform: translateY(-70%);
+  font-weight: bold;
   pointer-events: none;
   transition: 0.5s;
 }
-.input-box input:focus ~ label,
-.input-box input:valid ~ label {
+
+.input-box input:focus~label,
+.input-box input:valid~label {
   top: -5px;
 }
+
 .input-box input {
   width: 100%;
   height: 100%;
   background: transparent;
   border: none;
-  outline: none;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 1.1em;
+  font-size: 0.9em;
   color: #1d1b1b;
-  font-weight: 600;
 }
+
 .input-box .icon {
   position: absolute;
   right: 8px;
@@ -168,16 +174,8 @@ export default {
   margin: 14px;
 }
 
-#button {
-  margin-top: 10px;
+h1 {
+  font-size: 2.2vmax;
 }
 
-#button {
-  background: #27dbd5;
-  border: 2px solid #00afa9;
-  padding-block: 10px;
-  padding-inline: 20px;
-  font-size: 20px;
-  cursor: pointer;
-}
 </style>
