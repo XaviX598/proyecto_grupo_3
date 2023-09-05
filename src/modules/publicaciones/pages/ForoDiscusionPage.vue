@@ -1,4 +1,5 @@
 <template>
+<div class="container">
   <div class="foro">
     <div class="btn_irQuejas">
       <button @click="agregarTema()">Ingresa un nuevo tema en el foro</button>
@@ -24,6 +25,7 @@
         ></TemaVue>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -109,6 +111,7 @@ export default {
 </script>
 
 <style scoped>
+
 .foro {
   margin: 20px;
   display: flex;
@@ -130,6 +133,7 @@ export default {
   border-radius: 5px;
   width: 100%;
   box-sizing: border-box;
+  background: rgb(250, 238, 220);
 }
 
 .tema-info {

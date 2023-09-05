@@ -1,6 +1,8 @@
 <template>
-  <h1>Bienvenidos</h1>
-  <Banner />
+  <div class="container">
+    <h1>Bienvenidos</h1>
+    <Banner />
+  </div>
 </template>
 
 <script>
@@ -12,5 +14,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+body {
+  position: relative;
+  width: 100%;
+  background-image: url("../../../assets/imagenFondo.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: soft-light;
+}
 </style>

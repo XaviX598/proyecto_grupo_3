@@ -1,4 +1,5 @@
 <template>
+<div class="container">
   <div>
     <button @click="agregarNoticia">Ingresa tu noticia</button>
   </div>
@@ -17,6 +18,7 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen></iframe>
     </tr>
+  </div>
   </div>
 </template>
 
@@ -68,6 +70,13 @@ export default {
 </script>
 
 <style  scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(188, 212, 255);
+}
 .noticia {
   display: flex;
   flex-direction: column;

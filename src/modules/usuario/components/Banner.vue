@@ -82,6 +82,8 @@ export default {
   
   
 <style scoped>
+
+
 slide {
   width: 80vw;
 }
@@ -97,4 +99,5 @@ img {
 
   width: 100%;
 }
+
 </style>
