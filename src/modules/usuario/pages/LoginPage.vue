@@ -3,18 +3,16 @@
     <div class="wrapper">
       <div class="form-box login">
         <div class="user">
-          <font-awesome-icon class="userIcon" icon="fa-regular fa-user" style="color: #ffffff;" />
+          <font-awesome-icon
+            class="userIcon"
+            icon="fa-regular fa-user"
+            style="color: #ffffff"
+          />
         </div>
         <form @submit.prevent="verificarLogin">
           <div class="input-box">
-            <!-- <div>
-              <font-awesome-icon icon="fa-solid fa-user" style="color: #4a4a4a;" />
-            </div> -->
-            <div>
-              <input v-model="usuario" type="text" required />
+            <input v-model="usuario" type="text" required />
             <label>Usuario</label>
-            </div>
-            
           </div>
           <div class="input-box">
             <input v-model="contraseña" type="password" required />
@@ -24,7 +22,9 @@
           <div class="login-register">
             <p>
               No tienes una cuenta?
-              <router-link to="/registro" class="register-link">Registrate</router-link>
+              <router-link to="/registro" class="register-link"
+                >Registrate</router-link
+              >
             </p>
           </div>
         </form>
@@ -78,24 +78,24 @@ export default {
 <style scoped>
 .pageLogin {
   position: fixed;
-  top: 0; 
+  top: 0;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../../../assets/degradado.png');
+  background-image: url("../../../assets/degradado.png");
   background-size: cover;
   background-repeat: repeat;
 }
 
 .fa-user {
-  font-size: 4vw; 
+  font-size: 4vw;
 }
 
 .user {
   display: flex;
-  background: #A68D37;
+  background: #a68d37;
   width: 10vw;
   height: 10vw;
   border-radius: 100px;
@@ -134,16 +134,16 @@ export default {
   position: absolute;
   top: 50%;
   left: 5px;
-  transform: translateY(-50%);
+  transform: translateY(-100%);
   font-size: 1em;
-  color: #ff5555;
-  font-weight: 500;
+  color: #0022ff;
+  font-weight: bold;
   pointer-events: none;
   transition: 0.5s;
 }
 
-.input-box input:focus~label,
-.input-box input:valid~label {
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
   top: -5px;
 }
 
@@ -157,24 +157,6 @@ export default {
   font-size: 1.1em;
   color: #1d1b1b;
   font-weight: 600;
-}
-
-.input-box .icon {
-  position: absolute;
-  right: 8px;
-  font-size: 1.2em;
-  color: #1d1b1b;
-  line-height: 57px;
-}
-
-.error-message {
-  display: flex;
-  color: #ff5555;
-  font-size: 1.2em;
-  font-weight: bold;
-  align-content: center;
-  justify-content: center;
-  margin-bottom: 20px;
 }
 
 h2 {
@@ -194,7 +176,7 @@ h2 {
   .wrapper {
     width: 90%;
     height: auto;
-    max-width: 400px; 
+    max-width: 400px;
   }
   .form-box {
     padding: 20px;
@@ -213,7 +195,7 @@ h2 {
 @media screen and (max-width: 480px) {
   .wrapper {
     width: 90%;
-    max-width: none; 
+    max-width: none;
   }
   .form-box {
     padding: 10px;
@@ -222,10 +204,15 @@ h2 {
     font-size: 1.5em;
   }
   .input-box {
-    margin: 15px 0;
+    margin: 30px 0;
+    height: 50px;
   }
   #button {
     font-size: 16px;
   }
+
+  .user {
+  left: 45%;
+}
 }
 </style>
