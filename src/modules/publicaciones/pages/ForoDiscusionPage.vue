@@ -10,9 +10,18 @@
           <span class="fecha">{{ formatearFecha(tema.fecha) }}</span>
         </div>
         <h2 class="titulo">{{ tema.titulo }}</h2>
-        <font-awesome-icon :icon="iconoEye"  @click="buscarTema(tema.id)" class="ver-button"/>
-        <TemaVue class="comen" @objeto="manejarEvento" :temaobjeto="tema" v-if="tema" v-show="mostrarComentarios"></TemaVue>
-
+        <font-awesome-icon
+          :icon="iconoEye"
+          @click="buscarTema(tema.id)"
+          class="ver-button"
+        />
+        <TemaVue
+          class="comen"
+          @objeto="manejarEvento"
+          :temaobjeto="tema"
+          v-if="tema"
+          v-show="mostrarComentarios"
+        ></TemaVue>
       </div>
     </div>
   </div>
@@ -22,10 +31,8 @@
 import { buscarTodosTemasFachada } from "../../helpers/Foro";
 import { buscarTemaFachada } from "../../helpers/Foro";
 import TemaVue from "../components/Tema.vue";
-import { ingresarComentarioFachada } from "../../helpers/Comentario";
 
 import { mapState } from "vuex";
-
 
 export default {
   components: {
@@ -37,7 +44,7 @@ export default {
       tema: null,
       comentario: null,
       fecha: null,
-      iconoEye: 'fa-solid fa-eye',
+      iconoEye: "fa-solid fa-eye",
       mostrarComentarios: false,
       comentarios: [],
     };
@@ -45,38 +52,11 @@ export default {
 
   methods: {
     manejarEvento(datos) {
-      this.tema=datos
+      this.tema = datos;
     },
-    ingresarComentario() {
-      if (!this.comentario) {
-        alert("Por favor, complete todos los campos obligatorios.");
-        return;
-      }
-      const fechaActual = new Date().toISOString();
-
-      const objeto = {
-        usuario: this.usuariologin,
-        comentario: this.comentario,
-        fecha: fechaActual,
-        tema: this.tema,
-      };
-
-      ingresarComentarioFachada(objeto);
-
-      this.comentario = "";
-      this.valoracion = "";
-
-      const confirmacion = confirm("Nuevo Tema agregada con éxito");
-
-      if (confirmacion) {
-      } else {
-        this.$router.push({ path: "/foro" });
-      }
-    },
-    
 
     formatearFecha(fecha) {
-      if (!fecha) return ""; 
+      if (!fecha) return "";
       const fechaFormateada = new Date(fecha);
       const dia = fechaFormateada.getDate().toString().padStart(2, "0");
       const mes = (fechaFormateada.getMonth() + 1).toString().padStart(2, "0");
@@ -90,27 +70,26 @@ export default {
     },
 
     async buscarTema(id) {
-      if(this.mostrarComentarios) {
+      if (this.mostrarComentarios) {
         this.mostrarComentarios = false;
-        this.iconoEye = 'fa-solid fa-eye'
-      }else {
+        this.iconoEye = "fa-solid fa-eye";
+      } else {
         this.mostrarComentarios = true;
-        this.iconoEye = 'fa-solid fa-eye-slash'
+        this.iconoEye = "fa-solid fa-eye-slash";
       }
       const data = await buscarTemaFachada(id);
       console.log(data);
       this.tema = data;
+
+      this.$router.push({ path: "/foro" });
     },
-
-
-
   },
   mounted() {
-    console.log(this.usuariologin)
+    console.log(this.usuariologin);
     buscarTodosTemasFachada()
-      .then(temas => {
+      .then((temas) => {
         // Formatear las fechas antes de almacenarlas en opiniones
-        this.temas = temas.map(tema => {
+        this.temas = temas.map((tema) => {
           return {
             ...tema,
             fechaFormateada: this.formatearFecha(tema.fecha),
@@ -120,7 +99,6 @@ export default {
       .catch((error) => {
         console.error("Error al obtener temas:", error);
         console.error("Detalles del error:", error.message);
-
       });
   },
 
@@ -136,7 +114,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
 }
 
 .temas {
@@ -151,7 +128,7 @@ export default {
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
-  width: 100%; 
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -184,7 +161,7 @@ export default {
 .btn_irQuejas {
   text-align: center;
 }
-.comen{
+.comen {
   margin-left: 22%;
   margin-right: 0%;
 }
