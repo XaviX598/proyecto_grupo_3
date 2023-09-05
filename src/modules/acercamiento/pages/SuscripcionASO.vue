@@ -28,7 +28,7 @@
       <label>Direccion</label>
     </div>
   </div>
-  <button @click="registrarse">Registrarse</button>
+  <button @click="registrarse">Suscribirse</button>
   <label for="" v-show="mostrar" v-text="mensaje"></label>
 </template>
 

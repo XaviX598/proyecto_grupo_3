@@ -53,7 +53,6 @@ export default {
         fecha: fechaActual,
       };
       guardarQuejaFachada(objeto);
-      this.usuario = "";
       this.descripcion = "";
       this.valoracion = "";
 
