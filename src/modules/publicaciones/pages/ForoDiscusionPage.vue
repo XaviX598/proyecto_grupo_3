@@ -1,31 +1,21 @@
 <template>
-  <div class="tabla">
-    <table border="1">
-      <tr>
-        <th>Usuario</th>
-        <th>Fecha</th>
-        <th>Titulo</th>
-        <th>Accion</th>
-      </tr>
-      <tr v-for="(tema, index) in temas" :key="index">
-        <td>{{ tema.usuario.usuario }}</td>
-        <td>{{ formatearFecha(tema.fecha) }}</td>
-        <td>{{ tema.titulo }}</td>
-        <td><button @click="buscarTema(tema.id)">Ver</button></td>
-      </tr>
-    </table>
+  <div class="foro">
+    <div class="btn_irQuejas">
+      <button @click="agregarTema()">Ingresa un nuevo tema en el foro</button>
+    </div>
+    <div class="temas">
+      <div class="tema" v-for="(tema, index) in temas" :key="index">
+        <div class="tema-info">
+          <span class="usuario">{{ tema.usuario.usuario }}</span>
+          <span class="fecha">{{ formatearFecha(tema.fecha) }}</span>
+        </div>
+        <h2 class="titulo">{{ tema.titulo }}</h2>
+        <font-awesome-icon :icon="iconoEye"  @click="buscarTema(tema.id)" class="ver-button"/>
+        <TemaVue class="comen" @objeto="manejarEvento" :temaobjeto="tema" v-if="tema" v-show="mostrarComentarios"></TemaVue>
 
-    
-    
+      </div>
+    </div>
   </div>
-
-
-  <div class="btn_irQuejas">
-    <button @click="agregarTema()">Ingresa un nuevo tema en el foro</button>
-  </div>
-
-  <TemaVue @objeto="manejarEvento" :temaobjeto = "tema"  v-if="tema"></TemaVue>
-
 </template>
 
 <script>
@@ -47,7 +37,8 @@ export default {
       tema: null,
       comentario: null,
       fecha: null,
-
+      iconoEye: 'fa-solid fa-eye',
+      mostrarComentarios: false,
       comentarios: [],
     };
   },
@@ -85,9 +76,7 @@ export default {
     
 
     formatearFecha(fecha) {
-      if (!fecha) return ""; // Manejar el caso en el que la fecha es nula o indefinida
-
-      // Formatear la fecha al formato "YYYY-MM-DD"
+      if (!fecha) return ""; 
       const fechaFormateada = new Date(fecha);
       const dia = fechaFormateada.getDate().toString().padStart(2, "0");
       const mes = (fechaFormateada.getMonth() + 1).toString().padStart(2, "0");
@@ -101,6 +90,13 @@ export default {
     },
 
     async buscarTema(id) {
+      if(this.mostrarComentarios) {
+        this.mostrarComentarios = false;
+        this.iconoEye = 'fa-solid fa-eye'
+      }else {
+        this.mostrarComentarios = true;
+        this.iconoEye = 'fa-solid fa-eye-slash'
+      }
       const data = await buscarTemaFachada(id);
       console.log(data);
       this.tema = data;
@@ -134,5 +130,62 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.foro {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+.temas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tema {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.tema-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.usuario {
+  font-weight: bold;
+}
+
+.titulo {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.ver-button {
+  color: #007bff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.ver-button:hover {
+  color: #007bff;
+}
+
+.btn_irQuejas {
+  text-align: center;
+}
+.comen{
+  margin-left: 22%;
+  margin-right: 0%;
+}
 </style>

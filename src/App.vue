@@ -1,10 +1,10 @@
 <template>
-  <NavBarVue v-if="usuariologin == null" />
+  <NavBarVue v-if="usuariologin != null" />
   <div class="main-content">
     <router-view />
   </div>
-  <ContactosVue v-if="usuariologin == null" />
-  <FooterVue v-if="usuariologin == null" />
+  <ContactosVue v-if="usuariologin != null" />
+  <FooterVue v-if="usuariologin != null" />
 </template>
 
 <script>
