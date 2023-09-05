@@ -84,7 +84,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('C:\Users\kevin\Documents\Visual_workspace\PaginaProyectoGrupal\proyecto_grupo_3\src\assets\degradado.png');
+  background-image: url('../../../assets/degradado.png');
   background-size: cover;
   background-repeat: repeat;
 }

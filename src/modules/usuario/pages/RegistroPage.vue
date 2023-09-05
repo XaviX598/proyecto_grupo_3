@@ -25,7 +25,13 @@
             <label>Contraseña</label>
           </div>
           <div class="input-box">
-            <input v-model="usuario.semestre" type="number" required />
+            <input
+              v-model="usuario.semestre"
+              type="number"
+              min="1"
+              max="10"
+              required
+            />
             <label>Semestre</label>
           </div>
           <div class="input-box">
@@ -63,6 +69,7 @@ export default {
   },
   methods: {
     async registrarse() {
+
       this.usuario.contraseña = this.reverse(this.usuario.contraseña);
       const data = await ingresarUsuarioFachada(this.usuario);
       if (data === true && this.validarCedula(this.usuario.cedula)) {
@@ -190,7 +197,7 @@ export default {
 @media (max-width: 768px) {
   .wrapper {
     max-width: 100%;
-    border: 0; 
+    border: 0;
   }
 
   .form-box {
