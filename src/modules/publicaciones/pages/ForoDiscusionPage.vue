@@ -24,7 +24,7 @@
     <button @click="agregarTema()">Ingresa un nuevo tema en el foro</button>
   </div>
 
-  <TemaVue :temaobjeto = "tema"  v-if="tema"></TemaVue>
+  <TemaVue @objeto="manejarEvento" :temaobjeto = "tema"  v-if="tema"></TemaVue>
 
 </template>
 
@@ -53,6 +53,9 @@ export default {
   },
 
   methods: {
+    manejarEvento(datos) {
+      this.tema=datos
+    },
     ingresarComentario() {
       if (!this.comentario) {
         alert("Por favor, complete todos los campos obligatorios.");
@@ -107,6 +110,7 @@ export default {
 
   },
   mounted() {
+    console.log(this.usuariologin)
     buscarTodosTemasFachada()
       .then(temas => {
         // Formatear las fechas antes de almacenarlas en opiniones

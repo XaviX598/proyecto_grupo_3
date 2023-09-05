@@ -2,11 +2,19 @@
   <div class="pageLogin">
     <div class="wrapper">
       <div class="form-box login">
-        <h2>Login</h2>
+        <div class="user">
+          <font-awesome-icon class="userIcon" icon="fa-regular fa-user" style="color: #ffffff;" />
+        </div>
         <form @submit.prevent="verificarLogin">
           <div class="input-box">
-            <input v-model="usuario" type="text" required />
+            <!-- <div>
+              <font-awesome-icon icon="fa-solid fa-user" style="color: #4a4a4a;" />
+            </div> -->
+            <div>
+              <input v-model="usuario" type="text" required />
             <label>Usuario</label>
+            </div>
+            
           </div>
           <div class="input-box">
             <input v-model="contraseña" type="password" required />
@@ -16,9 +24,7 @@
           <div class="login-register">
             <p>
               No tienes una cuenta?
-              <router-link to="/registro" class="register-link"
-                >Registrate</router-link
-              >
+              <router-link to="/registro" class="register-link">Registrate</router-link>
             </p>
           </div>
         </form>
@@ -40,11 +46,11 @@ export default {
       user: null,
     };
   },
-     computed: {
+  computed: {
     ...mapState(["usuariologin"]),
   },
   methods: {
-     ...mapMutations(["setUsuarioLogin"]),
+    ...mapMutations(["setUsuarioLogin"]),
     cambiarUsuario(objeto) {
       const nuevoObjeto = objeto;
       this.setUsuarioLogin(nuevoObjeto);
@@ -56,7 +62,6 @@ export default {
       );
       if (data.id != null) {
         this.user = data;
-        //console.log(this.user);
         this.cambiarUsuario(this.user);
         this.$router.push("/bienvenida");
       } else {
@@ -72,43 +77,59 @@ export default {
 
 <style scoped>
 .pageLogin {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 0; 
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #c2ffd3;
+  background-image: url('../../../assets/degradado.png');
+  background-size: cover;
+  background-repeat: repeat;
 }
+
+.fa-user {
+  font-size: 4vw; 
+}
+
+.user {
+  display: flex;
+  background: #A68D37;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 100px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -10px;
+  left: 35%;
+}
+
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: 440px;
-  background: #ffebd2;
-  border: 6px solid #93e3d4;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  width: 35%;
+  background: rgb(255, 235, 210, 0.5);
+  border-radius: 15px;
+  box-shadow: 0 0 30px 10px rgb(0, 28, 44, 0.8);
 }
+
 .wrapper .form-box {
   width: 100%;
   padding: 40px;
 }
-.form-box h2 {
-  font-size: 2.2em;
-  color: #000000;
-  text-align: center;
-}
+
 .input-box {
   position: relative;
+  background: white;
   width: 100%;
   height: 50px;
   border-bottom: 2px solid #1d1b1b;
   margin: 30px 0;
 }
+
 .input-box label {
   position: absolute;
   top: 50%;
@@ -120,10 +141,12 @@ export default {
   pointer-events: none;
   transition: 0.5s;
 }
-.input-box input:focus ~ label,
-.input-box input:valid ~ label {
+
+.input-box input:focus~label,
+.input-box input:valid~label {
   top: -5px;
 }
+
 .input-box input {
   width: 100%;
   height: 100%;
@@ -135,6 +158,7 @@ export default {
   color: #1d1b1b;
   font-weight: 600;
 }
+
 .input-box .icon {
   position: absolute;
   right: 8px;
@@ -153,6 +177,10 @@ export default {
   margin-bottom: 20px;
 }
 
+h2 {
+  margin: 0;
+}
+
 #button {
   background: #27dbd5;
   border: 2px solid #00afa9;
@@ -160,5 +188,44 @@ export default {
   padding-inline: 20px;
   font-size: 20px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+    height: auto;
+    max-width: 400px; 
+  }
+  .form-box {
+    padding: 20px;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+  .input-box {
+    margin: 20px 0;
+  }
+  #button {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    width: 90%;
+    max-width: none; 
+  }
+  .form-box {
+    padding: 10px;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  .input-box {
+    margin: 15px 0;
+  }
+  #button {
+    font-size: 16px;
+  }
 }
 </style>
