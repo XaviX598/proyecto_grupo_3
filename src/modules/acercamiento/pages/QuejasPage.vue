@@ -1,22 +1,19 @@
 <template>
-    <div class="tabla">
-        <table border="1">
-            <tr>
-                <th>Usuario</th>
-                <th>Fecha</th>
-                <th>Detalles</th>
-                <th>Valoración</th>
-            </tr>
-            <tr v-for="(opinion, index) in opiniones" :key="index">
-                <td>{{ opinion.usuario.usuario }}</td>
-                <td>{{ formatearFecha(opinion.fecha) }}</td>
-                <td>{{ opinion.descripcion }}</td>
-                <td>{{ opinion.valoracion }}</td>
-            </tr>
-        </table>
+    <div class="btn_irQuejas">
+        <button class="btnQuejas" @click="agregarQueja">Ingresar opinión</button>
+    </div>
+    <div class="conversacion">
+        <div v-for="(opinion, index) in opiniones" :key="index" class="mensaje">
+            <div class="usuario-fecha">
+                <div class="usuario">{{ opinion.usuario.usuario }}</div>
+                <div class="fecha">{{ formatearFecha(opinion.fecha) }}</div>
+            </div>
+            <div class="descripcion"> {{ opinion.descripcion }}</div>
+            <div class="valoracion">Valoración: {{ opinion.valoracion }}</div>
+        </div>
     </div>
     <div class="btn_irQuejas">
-        <button @click="agregarQueja">Ingresa tu opinión sobre nuestro sitio</button>
+        <button class="btnQuejas" @click="agregarQueja">Ingresar opinión</button>
     </div>
 </template>
 
@@ -54,6 +51,7 @@ export default {
                         fechaFormateada: this.formatearFecha(opinion.fecha)
                     };
                 });
+                this.opiniones = this.opiniones.reverse();
             })
             .catch(error => {
                 console.error("Error al obtener opiniones:", error);
@@ -63,4 +61,66 @@ export default {
 
 };
 </script>
-<style></style>
+
+<style scoped>
+.conversacion {
+    width: 100%;
+}
+
+.mensaje {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.usuario-fecha {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+
+.fecha {
+    font-size: 12px;
+    color: #888;
+}
+
+.descripcion {
+    font-size: 14px;
+    margin-top: 40px;
+    font-weight: bold;
+    text-align: start;
+    /* Centrar la descripción */
+}
+
+.valoracion {
+    align-self: flex-end;
+    margin-top: 20px;
+}
+
+.btnQuejas {
+    padding: 10px 30px;
+    background-color: #017DC7;
+    color: white;
+    border-radius: 5px;
+}
+
+.btnQuejas:hover {
+    cursor: pointer;
+    color: #017DC7;
+    background-color: #ddd;
+
+}
+
+.btn_irQuejas {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    text-align: start;
+}
+</style>

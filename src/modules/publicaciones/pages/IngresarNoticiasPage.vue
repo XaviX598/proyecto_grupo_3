@@ -40,13 +40,13 @@ export default {
         return;
       }
       const fechaActual = new Date().toISOString();
-     
-     const user = {
-      id : this.usuariologin.id
-     };
-     
-     this.comprobar();
-     const objeto = {
+
+      const user = {
+        id: this.usuariologin.id
+      };
+
+      this.comprobar();
+      const objeto = {
         usuario: user,
         descripcion: this.descripcion,
         titulo: this.titulo,
@@ -73,25 +73,24 @@ export default {
       }
     },
     comprobar() {
-      const url=this.video
+      const url = this.video
       const regex1 = /https:\/\/www\.youtube\.com\/watch\?v=/;
       const regex2 = /https:\/\/youtu\.be\//;
       if (regex1.test(url)) {
         const urlParams = new URLSearchParams(new URL(url).search);
         const videoID = urlParams.get("v");
-        this.video= videoID;
+        this.video = videoID;
       } else if (regex2.test(url)) {
         const videoID = url.split("/").pop();
-        this.video= videoID;
+        this.video = videoID;
       } else {
-        this.video= url;
+        this.video = url;
       }
     },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
 
 
