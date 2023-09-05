@@ -69,7 +69,6 @@ export default {
   },
   methods: {
     async registrarse() {
-
       this.usuario.contraseña = this.reverse(this.usuario.contraseña);
       const data = await ingresarUsuarioFachada(this.usuario);
       if (data === true && this.validarCedula(this.usuario.cedula)) {
@@ -103,24 +102,24 @@ export default {
 .pageRegistro {
   position: absolute;
   top: 0;
-  left: 0;
+  min-height: 100vh;
   width: 100%;
-  height: 150%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #c2ffd3;
+  background-image: url("../../../assets/degradado.png");
+  background-size: cover;
+  background-repeat: repeat;
 }
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: 1000px;
-  background: #ffebd2;
-  border: 6px solid #93e3d4;
+  margin: 25px 0px;
+  width: 35%;
+  background: rgb(255, 235, 210, 0.5);
   border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 30px 10px rgb(0, 28, 44, 0.8);
 }
 .wrapper .form-box {
   width: 100%;
@@ -133,6 +132,7 @@ export default {
 }
 .input-box {
   position: relative;
+  background: white;
   width: 100%;
   height: 50px;
   border-bottom: 2px solid #1d1b1b;
@@ -142,10 +142,10 @@ export default {
   position: absolute;
   top: 50%;
   left: 5px;
-  transform: translateY(-50%);
+  transform: translateY(-100%);
   font-size: 1em;
-  color: #ff5555;
-  font-weight: 500;
+  color: #0022ff;
+  font-weight: bold;
   pointer-events: none;
   transition: 0.5s;
 }
@@ -172,19 +172,6 @@ export default {
   line-height: 57px;
 }
 
-.error-message {
-  display: flex;
-  color: #ff5555;
-  font-weight: bold;
-  align-content: center;
-  justify-content: center;
-  margin: 14px;
-}
-
-#button {
-  margin-top: 10px;
-}
-
 #button {
   background: #27dbd5;
   border: 2px solid #00afa9;
@@ -196,16 +183,41 @@ export default {
 
 @media (max-width: 768px) {
   .wrapper {
-    max-width: 100%;
-    border: 0;
+    width: 90%;
+    height: auto;
+    max-width: 400px;
   }
+  .form-box {
+    padding: 20px;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+  .input-box {
+    margin: 20px 0;
+  }
+  #button {
+    font-size: 18px;
+  }
+}
 
+@media screen and (max-width: 480px) {
+  .wrapper {
+    width: 90%;
+    max-width: none;
+  }
   .form-box {
     padding: 10px;
   }
-
-  .form-box h2 {
-    font-size: 1.2em;
+  h2 {
+    font-size: 1.5em;
+  }
+  .input-box {
+    margin: 30px 0;
+    height: 50px;
+  }
+  #button {
+    font-size: 16px;
   }
 }
 </style>

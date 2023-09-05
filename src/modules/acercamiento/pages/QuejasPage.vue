@@ -12,9 +12,6 @@
             <div class="valoracion">Valoración: {{ opinion.valoracion }}</div>
         </div>
     </div>
-    <div class="btn_irQuejas">
-        <button class="btnQuejas" @click="agregarQueja">Ingresar opinión</button>
-    </div>
 </template>
 
 <script>
