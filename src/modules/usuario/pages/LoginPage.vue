@@ -161,4 +161,43 @@ export default {
   font-size: 20px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+    height: auto;
+    max-width: 400px; 
+  }
+  .form-box {
+    padding: 20px;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+  .input-box {
+    margin: 20px 0;
+  }
+  #button {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    width: 90%;
+    max-width: none; 
+  }
+  .form-box {
+    padding: 10px;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  .input-box {
+    margin: 15px 0;
+  }
+  #button {
+    font-size: 16px;
+  }
+}
 </style>

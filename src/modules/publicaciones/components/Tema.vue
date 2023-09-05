@@ -1,5 +1,3 @@
-
-
 <template>
   <label for="">Titulo:</label>
   <p>{{ temaobjeto.titulo }}</p>
@@ -72,7 +70,8 @@ export default {
       );
 
       if (confirmacion) {
-        this.$router.go(0);
+        this.$router.push({ path: "/foro" });
+        this.$emit('objeto',null)
       } else {
         this.$router.push({ path: "/foro" });
       }

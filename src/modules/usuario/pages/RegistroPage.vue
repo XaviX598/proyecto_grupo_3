@@ -186,4 +186,19 @@ export default {
   font-size: 20px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .wrapper {
+    max-width: 100%;
+    border: 0; 
+  }
+
+  .form-box {
+    padding: 10px;
+  }
+
+  .form-box h2 {
+    font-size: 1.2em;
+  }
+}
 </style>
