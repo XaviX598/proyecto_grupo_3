@@ -100,4 +100,8 @@ img {
   width: 100%;
 }
 
+h4{
+  color: white;
+}
+
 </style>
