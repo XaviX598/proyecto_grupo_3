@@ -83,10 +83,11 @@ h1 {
   height: 6vh;
 }
 
-@media (max-width: 625px) {
+@media (max-width: 701px) {
   .menuEstatico {
     display: none;
   }
+
   #menuBtn {
     display: block;
     font-size: 24px;
@@ -111,6 +112,7 @@ h1 {
   .menu-active {
     transform: translateX(0);
   }
+
   .menu a {
     padding: 15px;
     color: white;
@@ -119,7 +121,7 @@ h1 {
   }
 }
 
-@media (min-width: 626px) {
+@media (min-width: 700px) {
   #menuBtn {
     display: none;
   }
