@@ -1,8 +1,10 @@
 <template>
-  <NavBarVue v-if="usuariologin!=null"/>
-  <router-view />
-  <ContactosVue v-if="usuariologin!=null"/>
-  <FooterVue v-if="usuariologin!=null"/>
+  <NavBarVue v-if="usuariologin == null" />
+  <div class="main-content">
+    <router-view />
+  </div>
+  <ContactosVue v-if="usuariologin == null" />
+  <FooterVue v-if="usuariologin == null" />
 </template>
 
 <script>
@@ -25,6 +27,9 @@ export default {
 
 <style>
 #app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -34,5 +39,9 @@ export default {
 
 body {
   margin: 0;
+}
+
+.main-content {
+  flex-grow: 1; 
 }
 </style>
