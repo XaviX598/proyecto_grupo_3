@@ -19,6 +19,6 @@ export default {
 
 p {
     margin: 0px;
-    font-size: 2.1vh;
+    font-size: 1.5vmax;
 }
 </style>

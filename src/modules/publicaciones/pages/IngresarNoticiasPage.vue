@@ -169,6 +169,89 @@ export default {
 };
 </script>
 
-<style  scoped></style>
-
+<style scoped>
+* {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.insertar {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  background: rgb(188, 212, 255);
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 20px;
+}
+.icons {
+  display: flex;
+  justify-content: space-between;
+}
+.fa-image,
+.fa-youtube,
+.fa-font,
+.fa-paper-plane {
+  cursor: pointer;
+  margin: 10px 10px 10px 0px;
+  justify-content: left;
+  float: left;
+}
+.red-placeholder::placeholder {
+  color: red;
+}
+textarea {
+  overflow: hidden;
+  height: 25px;
+  resize: none;
+  border: none;
+  text-align: justify;
+  outline: none;
+  padding-inline: 10px;
+  background-color: white;
+}
+input {
+  border: 1px solid gray;
+  outline: none;
+  padding-inline: 10px;
+  padding-block: 10px;
+  margin-bottom: 10px;
+}
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+#des {
+  padding-top: 10px;
+  border: 1px solid gray;
+  margin: 0;
+  height: 30px;
+  margin-bottom: 10px;
+  background: white;
+}
+#titulo {
+  padding-top: 7px;
+  border-bottom: 1px solid gray;
+}
+.fa-image:hover {
+  color: #0055ff
+}
+.fa-youtube:hover {
+  color: #ff0000
+}
+.fa-font:hover {
+  color: #000000
+}
+.fa-paper-plane:hover {
+  color: green
+}
+</style>
 
